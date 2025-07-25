@@ -12,8 +12,6 @@ import CategoriaList from './routes/Categorialist.jsx';
 import Movimientos from './routes/Movimientos.jsx';
 import StockFormulario from './routes/StockFormulario.jsx';
 import Dashboard from './routes/Dashboard.jsx';
-import Header from './components/Header.jsx';
-import Usuarios from './routes/UsuarioScreen.jsx'
 import UsuariosScreen from './routes/UsuarioScreen.jsx';
 const router = createBrowserRouter([
   {
