@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate,useParams } from 'react-router-dom';
 import productoService from '../services/producto.service';
 import categoriaService from '../services/categoria.service';
-import '../styles/productoForm.css';
+import '../styles/productoform.css';
 import Header from '../components/Header';
 
 function ProductoForm() {
