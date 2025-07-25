@@ -8,7 +8,7 @@ import Login from './routes/Login.jsx';
 import ProductoList from './routes/ListaProductos.jsx';
 import ProductoForm from './routes/ProductoForm.jsx';
 import CategoriaForm from './routes/CategoriaForm.jsx';
-import CategoriaList from './routes/Categorialist.jsx';
+import CategoriaList from './routes/CategoriaList.jsx';
 import Movimientos from './routes/Movimientos.jsx';
 import StockFormulario from './routes/StockFormulario.jsx';
 import Dashboard from './routes/Dashboard.jsx';
