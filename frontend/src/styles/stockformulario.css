@@ -1,0 +1,125 @@
+.stock-form-container {
+  max-width: 900px;
+   margin: 2rem auto;
+  padding: 1.5rem 2rem;
+  background-color: #2b2b2b;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.stock-form-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  color: #ffffff;
+}
+
+.stock-form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.stock-form-container label {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  display: block;
+  color: #ffffffcc;
+}
+
+.stock-form-container input,
+.stock-form-container select,
+.stock-form-container textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background-color: #1f1f1f;
+  color: white;
+  font-size: 1rem;
+}
+
+.stock-form-container span {
+  color: #ff4d4d;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+  display: block;
+}
+
+
+
+
+
+/* Estilos para react-select para que se vea como los inputs nativos */
+.stock-form-container .react-select__control {
+  background-color: #1f1f1f;
+  border: 1px solid #444;
+  color: white;
+  padding: 0.2rem;
+  border-radius: 6px;
+  min-height: 42px;
+  box-shadow: none;
+}
+
+.stock-form-container .react-select__control--is-focused {
+  border-color: #666;
+}
+
+.stock-form-container .react-select__menu {
+  background-color: #2b2b2b;
+  color: white;
+  border-radius: 6px;
+  z-index: 10;
+}
+
+.stock-form-container .react-select__option {
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.stock-form-container .react-select__option--is-focused {
+  background-color: #444;
+}
+
+.stock-form-container .react-select__single-value {
+  color: white;
+}
+
+.stock-form-container .react-select__input input {
+  color: white !important;
+  caret-color: white;
+  background-color: transparent;
+}
+
+
+.stock-form-container .react-select__placeholder {
+  color: #aaaaaa;
+}
+
+/* Crear producto btn */
+.crear-producto-btn {
+  display: block;
+  margin: 0 auto;
+  background-color: #27ae60;
+  color: white;
+  font-weight: 900;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.crear-producto-btn:hover {
+  background-color: #2ecc71;
+}
+
+
+/* Responsivo */
+@media (max-width: 500px) {
+  .stock-form-container {
+    padding: 1.5rem 1rem;
+  }
+}

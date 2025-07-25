@@ -1,0 +1,243 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Contenedor principal */
+.categoria-list-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1.5rem 2rem;
+  background-color: #2b2b2b;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  color: rgba(255, 255, 255, 0.9);
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+/* Título */
+.categoria-list-container h2 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Tabla */
+.categoria-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.categoria-table thead {
+  background-color: #1f1f1f;
+}
+
+.categoria-table th,
+.categoria-table td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #444;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center; /* centra todo el contenido */
+}
+
+.categoria-table th {
+  font-weight: 700;
+  color: #aaa;
+}
+
+.categoria-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  cursor: default;
+}
+
+/* Acciones de cada fila */
+.categoria-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+  color: #2ecc71;
+}
+
+.categoria-actions button:hover {
+  background-color: rgba(46, 204, 113, 0.15);
+}
+
+.categoria-actions button.delete-button {
+  color: #e74c3c;
+  margin-left: 10px;
+}
+
+.categoria-actions button.delete-button:hover {
+  background-color: rgba(231, 76, 60, 0.15);
+}
+
+/* Botón de crear */
+.crear-categoria-btn {
+  display: block;
+  margin: 0 auto;
+  background-color: #27ae60;
+  color: white;
+  font-weight: 700;
+  padding: 10px 22px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.crear-categoria-btn:hover {
+  background-color: #2ecc71;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: #1f1f1f;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 100%;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  font-weight: 600;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background-color: #1e1e1e;
+  color: white;
+  font-size: 1rem;
+}
+
+/* Botones del modal */
+.modal-buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.modal-buttons button {
+  flex: 1 1 40%;
+  min-width: 120px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  color: white;
+}
+
+.modal-buttons .confirm-btn {
+  background-color: #e74c3c;
+}
+
+.modal-buttons .confirm-btn:hover {
+  background-color: #c0392b;
+}
+
+.modal-buttons .cancel-btn {
+  background-color: #555;
+}
+
+.modal-buttons .cancel-btn:hover {
+  background-color: #777;
+}
+
+/* Botón "Ver detalle" junto a cantidad de productos */
+.ver-detalle-btn {
+  background-color: #2980b9; /* azul */
+  color: white;
+  font-weight: 700;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-align: center;
+
+  transition: background-color 0.3s;
+  position: absolute; /* lo sacamos del flujo para posicionar a la derecha */
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ver-detalle-btn:hover {
+  background-color: #3498db;
+}
+
+.ver-detalle-btn:focus {
+  outline: 2px solid #2980b9;
+  outline-offset: 2px;
+}
+
+/* Celda cantidad productos con posición relativa para posicionar botón */
+.cantidad-productos-cell {
+  position: relative;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .categoria-list-container {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .categoria-list-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .categoria-table th,
+  .categoria-table td {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .crear-categoria-btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  .modal-content {
+    padding: 1.5rem;
+  }
+
+  .modal-content input {
+    font-size: 0.95rem;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .modal-buttons button {
+    width: 100%;
+  }
+}

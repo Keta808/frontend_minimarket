@@ -1,0 +1,101 @@
+
+.producto-form-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  background-color: #2b2b2b;
+  padding: 1.5rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.7);
+  color: rgba(255, 255, 255, 0.9);
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.producto-form-container h2 {
+  text-align: center;
+  font-weight: 00;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.producto-form-error {
+  color: #e74c3c;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.producto-form label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+  color: #ccc;
+  font-size: 1rem;
+}
+
+.producto-form input,
+.producto-form select {
+  display:center;
+  width: 100%;
+  padding: 0.6rem 2.4rem;
+  margin-bottom: 0.9rem;
+  border: 1.5px solid #444;
+  border-radius: 8px;
+  background-color: #1e1e1e;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.producto-form input:focus,
+.producto-form select:focus {
+  outline: none;
+  border-color: #27ae60;
+  box-shadow: 0 0 4px #27ae60;
+}
+
+.producto-form button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #27ae60;
+  color: white;
+  font-weight: 700;
+  font-size: 1.05rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 0.5rem;
+}
+
+.producto-form button:hover {
+  background-color: #2ecc71;
+}
+
+
+
+
+/* Responsive */
+@media (max-width: 600px) {
+  .producto-form-container {
+    max-width: 100%;
+    padding: 1rem 1rem;
+  }
+
+  .producto-form-container h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .producto-form input,
+  .producto-form select {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .producto-form button {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
+
