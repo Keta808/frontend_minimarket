@@ -49,7 +49,7 @@ function StockFormulario() {
       const payload = {
         producto: formData.producto.value, 
         cantidad: Number(formData.cantidad),
-        motivo: formData.motivo,
+        motivo: tipo,
         usuario: usuario.id,
         observaciones: formData.observaciones || '',
       };
@@ -113,16 +113,6 @@ function StockFormulario() {
           {errors.cantidad && <span>{errors.cantidad.message}</span>}
 
           {errors.cantidad && <span>Ingrese una cantidad válida</span>}
-        </div>
-
-        <div>
-          <label>Motivo:</label>
-          <select {...register('motivo', { required: true })}>
-            <option value="">Seleccione un motivo</option>
-            <option value="entrada">Entrada</option>
-            <option value="salida">Salida</option>
-          </select>
-          {errors.motivo && <span>Seleccione un motivo</span>}
         </div>
 
         <div>
