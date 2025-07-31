@@ -1,10 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { login } from '../services/auth.service';
-import '../styles/login.css'; // asegúrate de importar los estilos
+import { useAuth } from '../context/AuthContext';
+import '../styles/login.css';
 
 function LoginForm() {
   const navigate = useNavigate();
+  const { setUser } = useAuth();
 
   const {
     register,
@@ -12,10 +14,16 @@ function LoginForm() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    login(data).then(() => {
+  const onSubmit = async (data) => {
+    try {
+      await login(data); // guarda token y user en localStorage dentro de login()
+      const storedUser = JSON.parse(localStorage.getItem('user'));
+      setUser(storedUser); // actualiza contexto
       navigate('/');
-    });
+    } catch (error) {
+      console.error('Error en login:', error);
+      // manejar error (mostrar mensaje)
+    }
   };
 
   return (

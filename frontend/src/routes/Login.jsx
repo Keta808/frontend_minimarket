@@ -1,26 +1,20 @@
 import LoginForm from '../components/LoginForm';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 function Login() {
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
 
-  // Cambiar esta línea para verificar token, no solo user
-  const token = localStorage.getItem('token');
+  console.log("is authenticated",isAuthenticated);
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/', { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
 
-  if (token) {
-    return (
-      <>
-        <h2>Ya estás logeado!</h2>
-        <button onClick={() => navigate('/')}>Ir a home</button>
-      </>
-    );
-  }
-
-  return (
-    <div>
-      <LoginForm />
-    </div>
-  );
+  return <LoginForm />;
 }
 
 export default Login;

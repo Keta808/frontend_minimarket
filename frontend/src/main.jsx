@@ -1,7 +1,8 @@
-// main.jsx
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import { AuthProvider } from './context/AuthContext.jsx';
 import Root from './routes/Root.jsx';
 import ErrorPage from './routes/ErrorPage.jsx';
 import Login from './routes/Login.jsx';
@@ -14,14 +15,19 @@ import StockFormulario from './routes/StockFormulario.jsx';
 import Dashboard from './routes/Dashboard.jsx';
 import UsuariosScreen from './routes/UsuarioScreen.jsx';
 
-// 🟩 Agrega esta línea
 import { setupAxiosInterceptors } from './services/axiosInterceptor.service.js';
-setupAxiosInterceptors(); // ⬅️ Inicializa los interceptores una vez
+import ProtectedRoute from './components/ProtectedRoute.jsx';
+
+setupAxiosInterceptors();
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Root />,
+    element: (
+      <ProtectedRoute>
+        <Root />
+      </ProtectedRoute>
+    ),
     errorElement: <ErrorPage />,
     children: [
       { path: '/', element: <Dashboard /> },
@@ -29,16 +35,74 @@ const router = createBrowserRouter([
     ],
   },
   { path: '/auth', element: <Login /> },
-  { path: '/productos/nuevo', element: <ProductoForm /> },
-  { path: '/productos/editar/:id', element: <ProductoForm /> },
-  { path: '/categorias', element: <CategoriaList /> },
-  { path: '/categorias/nueva', element: <CategoriaForm /> },
-  { path: '/categorias/editar/:id', element: <CategoriaForm /> },
-  { path: '/movimientos', element: <Movimientos /> },
-  { path: '/stock/registro', element: <StockFormulario /> },
-  { path: '/usuarios', element: <UsuariosScreen /> },
+  {
+    path: '/productos/nuevo',
+    element: (
+      <ProtectedRoute>
+        <ProductoForm />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/productos/editar/:id',
+    element: (
+      <ProtectedRoute>
+        <ProductoForm />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/categorias',
+    element: (
+      <ProtectedRoute>
+        <CategoriaList />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/categorias/nueva',
+    element: (
+      <ProtectedRoute>
+        <CategoriaForm />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/categorias/editar/:id',
+    element: (
+      <ProtectedRoute>
+        <CategoriaForm />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/movimientos',
+    element: (
+      <ProtectedRoute>
+        <Movimientos />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/stock/registro',
+    element: (
+      <ProtectedRoute>
+        <StockFormulario />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/usuarios',
+    element: (
+      <ProtectedRoute>
+        <UsuariosScreen />
+      </ProtectedRoute>
+    ),
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
+  <AuthProvider>
+    <RouterProvider router={router} />
+  </AuthProvider>
 );
