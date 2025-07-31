@@ -56,18 +56,28 @@ function ProductoForm() {
 
 
     const onSubmit = async (formData) => {
-      const { data, error } = esEdicion
-        ? await productoService.updateProducto(id, formData)
-        : await productoService.createProductos(formData);
+          let dataConUsuario = formData;
+          const user = JSON.parse(localStorage.getItem('user'));
+          if (!user || !user.id) {
+            setError("No se encontró el usuario autenticado");
+            return;
+          }
+          dataConUsuario = {
+            ...formData,
+            usuario: user.id,
+          };
+        const { data, error } = esEdicion
+          ? await productoService.updateProducto(id, dataConUsuario)
+          : await productoService.createProductos(dataConUsuario);
 
-      if (error) {
-        console.error('❌ Error al guardar producto:', error);
-        setError(error.details || 'Error al guardar producto');
-        return;
-      }
+        if (error) {
+          console.error('❌ Error al guardar producto:', error);
+          setError(error.details || 'Error al guardar producto');
+          return;
+        }
+        navigate('/productos');
+      };
 
-      navigate('/productos');
-    };
 
 
   return (
