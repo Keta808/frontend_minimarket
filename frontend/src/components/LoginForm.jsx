@@ -16,13 +16,13 @@ function LoginForm() {
 
   const onSubmit = async (data) => {
     try {
-      await login(data); // guarda token y user en localStorage dentro de login()
+      await login(data); 
       const storedUser = JSON.parse(localStorage.getItem('user'));
-      setUser(storedUser); // actualiza contexto
+      setUser(storedUser); 
       navigate('/');
     } catch (error) {
       console.error('Error en login:', error);
-      // manejar error (mostrar mensaje)
+      
     }
   };
 

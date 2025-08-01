@@ -6,8 +6,6 @@ import { useAuth } from '../context/AuthContext';
 function Login() {
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
-
-  console.log("is authenticated",isAuthenticated);
   useEffect(() => {
     if (isAuthenticated) {
       navigate('/', { replace: true });

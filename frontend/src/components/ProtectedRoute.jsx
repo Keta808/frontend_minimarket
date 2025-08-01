@@ -5,7 +5,6 @@ function ProtectedRoute({ children }) {
   const { isAuthenticated, isLoading } = useAuth();
 
   if (isLoading) {
-    // Puedes mostrar un loader si quieres
     return null;
   }
 

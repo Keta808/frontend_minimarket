@@ -41,6 +41,7 @@ function StockFormulario() {
   const onSubmit = async (formData) => {
     try {
       const usuario = JSON.parse(localStorage.getItem('user'));
+       
       if (!usuario) {
         setError('Usuario no autenticado');
         return;
@@ -50,7 +51,7 @@ function StockFormulario() {
         producto: formData.producto.value, 
         cantidad: Number(formData.cantidad),
         motivo: tipo,
-        usuario: usuario.id,
+        usuario: usuario._id,
         observaciones: formData.observaciones || '',
       };
 

@@ -4,6 +4,7 @@ import usuarioService from '../services/user.service';
 import Header from  '../components/Header';
 import '../styles/usuarios.css';
 import CambiarPassword from '../components/CambiarPassword';
+import { useAuth } from '../context/AuthContext';
 
 function UsuariosScreen() {
   const navigate = useNavigate();
@@ -17,13 +18,11 @@ function UsuariosScreen() {
     password: '',
   });
 
-  const usuarioActual = JSON.parse(localStorage.getItem('user'));
-  console.log("usuario:",usuarioActual);
+  const { user: usuarioActual } = useAuth();
+
   const esAdmin = usuarioActual.roles[0].name === 'admin';
 
   useEffect(() => {
-   
-
     usuarioService.getUsers()
       .then(res => setUsuarios(res.data))
       .catch(() => setError('Error al cargar usuarios'))

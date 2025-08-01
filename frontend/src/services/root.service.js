@@ -10,9 +10,8 @@ const instance = axios.create({
   withCredentials: true,
 });
 
-// Interceptor para agregar el token a cada request
 instance.interceptors.request.use((config) => {
-  const token = localStorage.getItem('accessToken');
+  const token = localStorage.getItem('token'); 
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -28,20 +27,18 @@ instance.interceptors.response.use(
       error.response?.status === 401 &&
       !originalRequest._retry
     ) {
-      originalRequest._retry = true;
-
+      originalRequest._retry = true; 
       try {
-        // Llama refresh token (GET, con credenciales para enviar cookie)
         const res = await instance.get('/auth/refresh', { withCredentials: true });
-
-        const newAccessToken = res.data.accessToken;
-        localStorage.setItem('token', newAccessToken);
-
-        // Actualiza Authorization header y reintenta la request original
+    
+        const newAccessToken = res.data?.data?.accessToken;
+        if (!newAccessToken) {
+          throw new Error("Refresh fallido: no hay token.");
+        } 
+        localStorage.setItem('token', newAccessToken);   
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
         return instance(originalRequest);
       } catch (refreshError) {
-        console.warn('Token expirado o inválido. Cerrando sesión...');
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         window.location.href = '/auth';
@@ -49,9 +46,9 @@ instance.interceptors.response.use(
       }
     }
 
+    console.error("🚫 Error no manejado por el interceptor o refresh ya intentado.");
     return Promise.reject(error);
   }
 );
-
 
 export default instance;

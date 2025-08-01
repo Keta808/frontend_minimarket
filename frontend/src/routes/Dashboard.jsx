@@ -12,7 +12,6 @@ export default function Dashboard() {
     const fetchMovimientos = async () => {
       try {
         const res = await movimientoService.getUltimosMovimientos();
-        console.log  (res, "res");
         setUltimosMovimientos(res);
       } catch (error) {
         console.error('Error al obtener movimientos:', error);
@@ -38,7 +37,7 @@ export default function Dashboard() {
       <div className="movimientos">
         <h2 style={{ marginBottom: '1rem' }}>Últimos Movimientos</h2>
         
-        {/* Tabla con encabezados */}
+      
         <div className="movimientos-header">
           <div className="col tipo-col">Tipo</div>
           <div className="col producto-col">Producto</div>
@@ -46,7 +45,7 @@ export default function Dashboard() {
           <div className="col fecha-col">Fecha</div>
         </div>
 
-        {/* Lista de movimientos */}
+       
         {ultimosMovimientos.map((mov) => (
           <div
             key={mov._id}

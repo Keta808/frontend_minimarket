@@ -16,7 +16,7 @@ export const login = async ({ email, password }) => {
     }
   } catch (error) {
     console.error('Error login service:', error);
-    throw error; // para que LoginForm lo detecte
+    throw error; 
   }
 };
 

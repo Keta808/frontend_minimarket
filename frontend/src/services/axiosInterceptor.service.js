@@ -1,4 +1,3 @@
-// src/services/axiosInterceptor.js
 import instance from './root.service';
 
 let isAlreadyRedirecting = false;

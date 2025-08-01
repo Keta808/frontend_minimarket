@@ -3,7 +3,6 @@ import axios from './root.service';
 
  const registrarEntrada = async (data) => {
   try {
-    console.log("data que llega al registrar", data);
     const res = await axios.post("/stock/entrada", data);
     return res.data;
   } catch (error) {

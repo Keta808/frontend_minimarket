@@ -1,6 +1,6 @@
 import '../styles/header.css';
 import { useNavigate } from 'react-router-dom';
-import { logout } from '../services/auth.service';
+import { useAuth } from '../context/AuthContext'; 
 import { useState } from 'react';
 
 export default function Header() {
@@ -8,12 +8,14 @@ export default function Header() {
   const [menuAbierto, setMenuAbierto] = useState(false);
   const toggleMenu = () => setMenuAbierto(!menuAbierto);
 
-  const handleLogout = () => {
-    logout();
-    navigate('/auth');
+  const { logout } = useAuth();  
+
+  const handleLogout = async () => {
+    await logout();  
+    navigate('/auth', { replace: true }); 
   };
 
-   return (
+  return (
     <header className="header">
       <div className="logo">Minimarket</div>
 
@@ -27,12 +29,10 @@ export default function Header() {
         <button onClick={() => navigate('/categorias')}>Categorías</button>
         <button onClick={() => navigate('/movimientos')}>Movimientos</button>
         <button onClick={() => navigate('/usuarios')}>Usuarios</button>
-            <button className="logout-button" onClick={handleLogout}>
-        Cerrar sesión
-      </button>
+        <button className="logout-button" onClick={handleLogout}>
+          Cerrar sesión
+        </button>
       </nav>
-  
-    
     </header>
   );
 }

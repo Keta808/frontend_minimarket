@@ -9,11 +9,8 @@ function ProductoList() {
   const [error, setError] = useState('');
   const [productoAEliminar, setProductoAEliminar] = useState(null);
   const [mostrarModal, setMostrarModal] = useState(false);
-
   const [busquedaNombre, setBusquedaNombre] = useState('');
   const [busquedaCategoria, setBusquedaCategoria] = useState('');
-  const [ordenStock, setOrdenStock] = useState('');
-
   const [ordenStockAscendente, setOrdenStockAscendente] = useState(true);
 
 

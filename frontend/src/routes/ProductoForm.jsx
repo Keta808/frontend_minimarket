@@ -57,14 +57,17 @@ function ProductoForm() {
 
     const onSubmit = async (formData) => {
           let dataConUsuario = formData;
+
           const user = JSON.parse(localStorage.getItem('user'));
-          if (!user || !user.id) {
+        
+
+          if (!user || !user._id) {
             setError("No se encontró el usuario autenticado");
             return;
           }
           dataConUsuario = {
             ...formData,
-            usuario: user.id,
+            usuario: user._id,
           };
         const { data, error } = esEdicion
           ? await productoService.updateProducto(id, dataConUsuario)

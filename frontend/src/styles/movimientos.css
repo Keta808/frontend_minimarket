@@ -59,7 +59,7 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 0.9rem;
-  min-width: 700px; /* para scroll horizontal en móvil */
+  min-width: 700px; 
 }
 
 .movimientos-table thead {

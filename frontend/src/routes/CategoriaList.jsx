@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import categoriaService from "../services/categoria.service";
 import '../styles/categoriaslist.css';
 import Header from '../components/Header.jsx';
@@ -15,12 +14,10 @@ function CategoriaList() {
   const [mostrarModalDetalle, setMostrarModalDetalle] = useState(false);
   const [productosDetalle, setProductosDetalle] = useState([]);
   const [categoriaDetalleNombre, setCategoriaDetalleNombre] = useState("");
-
-
   const [filtroNombre, setFiltroNombre] = useState("");
   const [ordenAscendente, setOrdenAscendente] = useState(true);
 
-  const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchCategorias = async () => {
@@ -111,7 +108,7 @@ const guardarCategoria = async () => {
     setCategoriaDetalleNombre("");
   };
 
-  // NUEVO: aplicar filtro y orden
+
   const categoriasFiltradas = categorias
     .filter(cat => (cat.nombre || cat.categoria).toLowerCase().includes(filtroNombre.toLowerCase()))
     .sort((a, b) => {
@@ -126,7 +123,7 @@ const guardarCategoria = async () => {
       <Header />
       <h2>Listado de Categorías</h2>
 
-      {/* NUEVO: barra de búsqueda y orden */}
+      
       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "1rem" }}>
         <input
           type="text"
@@ -204,7 +201,7 @@ const guardarCategoria = async () => {
         Crear Categoría
       </button>
 
-      {/* Modal eliminación */}
+     
       {mostrarModal && (
         <div className="modal-overlay">
           <div className="modal-content">
@@ -223,7 +220,7 @@ const guardarCategoria = async () => {
         </div>
       )}
 
-      {/* Modal formulario */}
+     
       {mostrarModalFormulario && (
         <div className="modal-overlay">
           <div className="modal-content">
@@ -246,7 +243,7 @@ const guardarCategoria = async () => {
         </div>
       )}
 
-      {/* Modal detalle productos */}
+     
       {mostrarModalDetalle && (
         <div className="modal-overlay">
           <div className="modal-content modal-detalle-productos">

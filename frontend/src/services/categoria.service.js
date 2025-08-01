@@ -3,13 +3,11 @@ import {handleError} from '../utils/handleError';
 
 const getAllCategorias = async () => {
   const res = await axios.get('/categoria');
-  console.log(res);
   return res.data.data;
 };
 
 const getCategoriasConDetalleProductos = async () => {
   const res = await axios.get('/categoria/getCategoriasConDetalleProductos');
-  console.log(res);
   return res.data.data;
 };
 

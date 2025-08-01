@@ -22,7 +22,7 @@ function Movimientos() {
     fetchMovimientos();
   }, []);
 
-  // Filtro en frontend (puedes moverlo a backend luego)
+ 
   const movimientosFiltrados = movimientos.filter((mov) => {
     const productoNombre =
       `${mov.producto?.nombre_base || ""} ${mov.producto?.presentacion || ""}`.toLowerCase();
